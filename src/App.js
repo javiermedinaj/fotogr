@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Works from './components/Works';
+import Film from './components/Film';
+import Footer from './components/Footer';
+import Contact from './components/Contact';
+import Loader from './components/Loader';
 
-function App() {
+const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  // Simulando un tiempo de carga, puedes sustituir esto con tu lógica real de carga.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AnimatePresence>
+      {loading ? (
+        <motion.div key="loader">
+          <Loader setLoading={setLoading} />
+        </motion.div>
+      ) : (
+        <div>
+          <Navbar />
+          <Hero />
+          <Works />
+          <Film />
+          <Contact />
+           <Footer /> 
+        </div>
+      )}
+    </AnimatePresence>
   );
-}
+};
 
 export default App;
