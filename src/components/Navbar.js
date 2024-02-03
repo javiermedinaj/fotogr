@@ -1,4 +1,6 @@
+// Navbar.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -9,11 +11,13 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between bg-white-700">
-      <img
-        src="/logo.jpg"
-        alt="Logo"
-        className="w-10 h-10 md:w-24 md:h-24 object-contain"
-      />
+      <Link to="/" className="flex items-center">
+        <img
+          src="/logo.jpg"
+          alt="Logo"
+          className="w-10 h-10 md:w-24 md:h-24 object-contain"
+        />
+      </Link>
       <div className="flex items-center">
         <div className="md:hidden">
           <button
@@ -26,10 +30,9 @@ const Navbar = () => {
         <div
           className={`md:flex ${open ? 'flex' : 'hidden'}`}
         >
-          <a href="#" className="text-black px-2">Home</a>
-          <a href="#" className="text-black px-2">About</a>
-        
-          <a href="#" className="text-black px-2">Contact</a>
+          <Link to="/" className="text-black px-2">Home</Link>
+          <Link to="/about" className="text-black px-2">About</Link>
+          <Link to="/contact" className="text-black px-2">Contact</Link>
         </div>
       </div>
     </nav>

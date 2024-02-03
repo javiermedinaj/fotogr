@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Works from './components/Works';
-import Film from './components/Film';
-import Footer from './components/Footer';
-import Contact from './components/Contact';
+// import Hero from './components/Hero';
+// import Works from './components/Works';
+// import Film from './components/Film';
+// import Footer from './components/Footer';
+// import Contact from './components/Contact';
 import Loader from './components/Loader';
+import Home from './pages/Home'
+import About from './pages/About'
+import Contact from './pages/Contact'
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -27,14 +36,18 @@ const App = () => {
           <Loader setLoading={setLoading} />
         </motion.div>
       ) : (
-        <div>
-          <Navbar />
-          <Hero />
-          <Works />
-          <Film />
-          <Contact />
-           <Footer /> 
-        </div>
+      <>
+         <Router>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact/" element={<Contact />} />
+        
+      </Routes>
+    </Router>
+      </>
       )}
     </AnimatePresence>
   );
