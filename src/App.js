@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Navbar from './components/Navbar';
-// import Hero from './components/Hero';
-// import Works from './components/Works';
-// import Film from './components/Film';
-// import Footer from './components/Footer';
-// import Contact from './components/Contact';
 import Loader from './components/Loader';
 import Home from './pages/Home'
 import About from './pages/About'
@@ -37,14 +31,11 @@ const App = () => {
         </motion.div>
       ) : (
       <>
-         <Router>
-      <Navbar />
-
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact/" element={<Contact />} />
-        
       </Routes>
     </Router>
       </>

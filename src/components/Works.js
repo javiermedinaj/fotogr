@@ -50,7 +50,7 @@ function Works() {
           initial={{ opacity: 0 }}
           animate={textAnimation}
         >
-          {/* Contenido del texto */}
+           Contenido del texto 
         </motion.div>
         <div className="flex-1">
           <motion.img
