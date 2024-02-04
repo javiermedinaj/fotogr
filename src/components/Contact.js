@@ -1,10 +1,9 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 const Contact = () => {
   return (
 <div className="relative h-screen">
       <video
-       
         autoPlay
         loop
         muted
@@ -27,7 +26,7 @@ const Contact = () => {
           data-te-ripple-init=""
           data-te-ripple-color="light"
         >
-         Contact
+         <Link to="/contact" className="text-white px-2">Contact</Link>
         </button>
       </div>
     </div>

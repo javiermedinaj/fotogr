@@ -7,7 +7,7 @@ const Film = () => {
       {/* Nueva columna */}
       <div className="flex flex-col md:flex-row">
         {/* Primera columna con la foto mediana */}
-        <div className="md:w-1/2">
+        <div className="md:w-1/2 p-2">
           <img
             src="/foto1.jpg"
             alt="Foto Mediana"
@@ -17,7 +17,7 @@ const Film = () => {
         </div>
 
         {/* Segunda columna con el texto y el botón */}
-        <div className="md:w-1/2 p-8">
+        <div className="md:w-1/2 p-8 md:pl-12 md:pr-8 md:py-8">
           <h2 className="text-2xl font-bold mb-4">video-de-boda-buenos-aires</h2>
           <p>DEPARTAMENTO DE POR MEDIO</p>
           <p>JANISE & JULIAN</p>

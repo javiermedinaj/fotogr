@@ -36,7 +36,7 @@ function Works() {
       </motion.h1>
 
       <div className="flex flex-col md:flex-row mt-8 md:space-x-8">
-        <div className="flex-1">
+        <div className="flex-1 p-2">
           <motion.img
             src="/2.jpg"
             alt="Primera Foto"
@@ -50,9 +50,11 @@ function Works() {
           initial={{ opacity: 0 }}
           animate={textAnimation}
         >
-           Contenido del texto 
+           <h3 className="mt-8">Historias unicas con amor</h3>
+           <h3 className="mt-8">La mejor fotografia</h3>
+           <h3 className="mt-8">Para tus eventos</h3>
         </motion.div>
-        <div className="flex-1">
+        <div className="flex-1 p-2">
           <motion.img
             src="/4.jpg"
             alt="Tercera Foto"
@@ -71,7 +73,9 @@ function Works() {
         >
           Sobre nosotros
         </motion.h2>
-        <p>Somos Maxi Segredo y Felipe Benoit. Hace años que trabajamos en la fotografía y video y nos apasiona cada vez que lo hacemos. Somos un equipo conformado por jóvenes con muchas ganas, ambición y entrega pero con una actitud muy responsable y comprometida frente a este acontecimiento tan importante, que quedará guardado para el resto de sus vidas. Antes que nada, de parte de todo el equipo, queremos felicitarlos por este paso que dan como pareja. Por eso queremos desearles lo mejor para esta nueva etapa. Para nosotros va a ser más que un placer acompañarlos y estar al lado de ustedes en uno de los días más importantes de sus vidas!</p>
+        <p
+        className="text-lg md:text-xl lg:text-1xl p-2"
+        >Somos Maxi Segredo y Felipe Benoit. Hace años que trabajamos en la fotografía y video y nos apasiona cada vez que lo hacemos. Somos un equipo conformado por jóvenes con muchas ganas, ambición y entrega pero con una actitud muy responsable y comprometida frente a este acontecimiento tan importante, que quedará guardado para el resto de sus vidas. Antes que nada, de parte de todo el equipo, queremos felicitarlos por este paso que dan como pareja. Por eso queremos desearles lo mejor para esta nueva etapa. Para nosotros va a ser más que un placer acompañarlos y estar al lado de ustedes en uno de los días más importantes de sus vidas!</p>
       </div>
     </div>
   );

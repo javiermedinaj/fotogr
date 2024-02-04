@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <div className="md:hidden">
           <button
-            className="text-black focus:outline-none"
+            className="text-black focus:outline-none mx-2"
             onClick={toggleMenu}
           >
             {open ? 'X' : 'Menu'}
