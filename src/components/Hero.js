@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { motion } from 'framer-motion';
@@ -12,18 +12,22 @@ const Hero = () => {
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to(slider.current, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        scrub: 0.25,
-        start: 0,
-        end: window.innerHeight,
-        onUpdate: (e) => (direction = e.direction * -1),
-      },
-      x: '-500px',
-    });
-    requestAnimationFrame(animate);
-  }, []);
+    
+    if (slider.current) {
+      gsap.to(slider.current, {
+        scrollTrigger: {
+          trigger: document.documentElement,
+          scrub: 0.25,
+          start: 0,
+          end: window.innerHeight,
+          onUpdate: (e) => (direction = e.direction * -1),
+        },
+        x: '-500px',
+      });
+
+      requestAnimationFrame(animate);
+    }
+  }, [slider.current]);
 
   const animate = () => {
     if (xPercent < -100) {
@@ -31,8 +35,8 @@ const Hero = () => {
     } else if (xPercent > 0) {
       xPercent = -100;
     }
-    gsap.set(firstText.current, { xPercent: xPercent });
-    gsap.set(secondText.current, { xPercent: xPercent });
+    // gsap.set(firstText.current, { xPercent: xPercent });
+    // gsap.set(secondText.current, { xPercent: xPercent });
     requestAnimationFrame(animate);
     xPercent += 0.1 * direction;
   };
@@ -53,17 +57,16 @@ const Hero = () => {
       <div className="absolute bottom-20 left-0">
         <div ref={slider} className="relative whitespace-nowrap">
           <p ref={firstText} className="relative m-0 text-white text-4xl lg:text-6xl font-semibold pr-10">
-            Freelance Developer -
+            Freelance
           </p>
           <p ref={secondText} className="absolute left-full top-0 relative m-0 text-white text-4xl lg:text-6xl font-semibold pr-10">
-            Freelance Developer -
+            Photographer
           </p>
         </div>
       </div>
       <div data-scroll data-scroll-speed={0.1} className="absolute top-1/3 left-2/3 text-white text-base lg:text-xl font-light">
-     
-        <p>Freelance</p>
-        <p>Designer & Developer</p>
+        <p>s3 Studios</p>
+        <p>Segredo & Benoit Studios</p>
       </div>
     </motion.main>
   );

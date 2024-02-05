@@ -35,8 +35,8 @@ export default function Works() {
   const description = useRef(null);
   const isInView = useInView(description);
   return (
-    <div ref={description} className="lg:pl-20 lg:pr-20 pt-20 flex justify- p-6">
-      <div className="max-w-7xl flex gap-10 relative">
+    <div ref={description} className="lg:pl-20 lg:pr-20 pt-20 flex justify- p-6 dark:bg-zinc-950 dark:text-white">
+      <div className="max-w-7xl flex gap-10 relative ">
         <p className="m-0 text-2xl lg:text-4xl leading-7">
           {phrase.split(" ").map((word, index) => (
             <span key={index} className="relative inline-flex">
@@ -58,11 +58,7 @@ export default function Works() {
         >
           The combination of my passion for design, code & interaction positions me in a unique place in the web design world.
         </motion.p>
-        {/* <div data-scroll data-scroll-speed={0.1}>
-          <button className="top-80% lg:left-[-200px] left-1/2 lg:translate-x-0 -translate-x-1/2 w-36 h-36 bg-gray-800 text-white rounded-full absolute flex items-center justify-center cursor-pointer">
-            <p className="m-0 text-base font-light">About me</p>
-          </button>
-        </div> */}
+        
       </div>
     </div>
   );
