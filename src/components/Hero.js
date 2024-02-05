@@ -15,7 +15,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen dark:bg-black">
       <video
         ref={videoRef}
         autoPlay

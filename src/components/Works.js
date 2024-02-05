@@ -26,7 +26,7 @@ function Works() {
   }, [textAnimation, imagesAnimation]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen overflow-x-hidden mt-4">
+    <div className="flex flex-col items-center justify-center min-h-screen overflow-x-hidden dark:bg-black dark:text-white">
       <motion.h1
         className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-center"
         initial={{ opacity: 0 }}
