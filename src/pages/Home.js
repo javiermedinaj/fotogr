@@ -8,12 +8,11 @@ import Layout from '../components/Layout'
 const Home = () => {
   return (
     <Layout>
-        {/* <Hero/> */}
+         <Hero/> 
         <Works/>
         <Film/>
         <Contact/>
-
-    </Layout>
+   </Layout>
   )
 }
 

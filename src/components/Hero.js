@@ -1,45 +1,71 @@
-import React, { useState, useRef } from 'react';
+import { useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const firstText = useRef(null);
+  const secondText = useRef(null);
+  const slider = useRef(null);
+  let xPercent = 0;
+  let direction = -1;
 
-  const togglePlay = () => {
-    const video = videoRef.current;
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(slider.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: 0.25,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: (e) => (direction = e.direction * -1),
+      },
+      x: '-500px',
+    });
+    requestAnimationFrame(animate);
+  }, []);
+
+  const animate = () => {
+    if (xPercent < -100) {
+      xPercent = 0;
+    } else if (xPercent > 0) {
+      xPercent = -100;
     }
-    setIsPlaying(!isPlaying);
+    gsap.set(firstText.current, { xPercent: xPercent });
+    gsap.set(secondText.current, { xPercent: xPercent });
+    requestAnimationFrame(animate);
+    xPercent += 0.1 * direction;
+  };
+
+  const slideUp = {
+    initial: {
+      y: 0,
+    },
+    enter: {
+      y: 0,
+      transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 2.5 },
+    },
   };
 
   return (
-    <div className="relative h-screen dark:bg-black">
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        className="absolute h-full w-full object-cover"
-        playsInline
-      >
-        <source src="/video1.mp4" type="video/mp4" />
-        Tu navegador no soporta el elemento de video.
-      </video>
-      <div className="absolute text-center text-white w-full p-4">
-        <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-         S3 Studios
-        </p>
-        <h1 className="text-lg md:text-xl lg:text-2xl mb-6">
-          Based in Uruguay 
-        </h1>
-        <button onClick={togglePlay} className="bg-gray-600 text-white px-4 py-2 rounded">
-          {isPlaying ? 'Pause' : 'Play'}
-        </button>
-        {/* Add more text or buttons as needed */}
+    <motion.main variants={slideUp} initial="initial" animate="enter" className="relative flex h-screen overflow-hidden">
+      <video src="/video1.mp4" autoPlay loop muted playsInline className="object-cover w-full h-full" alt="background" />
+      <div className="absolute bottom-20 left-0">
+        <div ref={slider} className="relative whitespace-nowrap">
+          <p ref={firstText} className="relative m-0 text-white text-4xl lg:text-6xl font-semibold pr-10">
+            Freelance Developer -
+          </p>
+          <p ref={secondText} className="absolute left-full top-0 relative m-0 text-white text-4xl lg:text-6xl font-semibold pr-10">
+            Freelance Developer -
+          </p>
+        </div>
       </div>
-    </div>
+      <div data-scroll data-scroll-speed={0.1} className="absolute top-1/3 left-2/3 text-white text-base lg:text-xl font-light">
+     
+        <p>Freelance</p>
+        <p>Designer & Developer</p>
+      </div>
+    </motion.main>
   );
 };
 

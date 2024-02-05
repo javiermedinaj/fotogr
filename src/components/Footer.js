@@ -1,113 +1,59 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { useScroll, motion, useTransform } from 'framer-motion';
+import { FaInstagram, FaEmail, FaWhatsapp } from 'react-icons/fa';
 
-const Footer = () => {
+export default function Footer() {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container.current,
+    offset: ['start end', 'end end'],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-10, 0]);
+
   return (
-    <footer className="flo-footer flo-footer--518 disable-appear flex flex-col items-center mt-6 p-4">
-      <div className="flo-footer-instagram-area text-center mb-2">
-        <motion.div
-          className="flo-footer-instagram-area__text-area flo-footer-instagram-area__text-area--title-over mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          <span className="flo-footer-instagram-area__pretitle" data-font="third_level/overline_2">
-            FOLLOW US ON INSTAGRAM
-          </span>
-          <a
-            className="flo-footer-instagram-area__title"
-            rel="noreferrer"
-            href="https://www.instagram.com/sybstudios?igsh=N2E3Z204dmlvbjZp"
-            target="_blank"
-            data-font="title_3/xsmall"
-          >
-            @sybstudios
+    <motion.div
+      style={{ y }}
+      ref={container}
+      className="flex flex-col items-center justify-center bg-gray-900 text-white py-10 relative"
+    >
+      <div className="flex flex-col items-center max-w-7xl w-full mx-10">
+        <div className="border-b border-gray-600 pb-10 relative text-center">
+          <a href="mailto:info@dennissnellenberg.com">
+            <div className="w-20 h-20 rounded-full overflow-hidden mx-auto">
+              <img
+                src="/logo.jpg"
+                alt="image"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </a>
-        </motion.div>
-
-        <motion.div
-          className="flo-footer-instagram-area__images grid grid-cols-3 md:grid-cols-3 gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-      
-          <motion.img
-        //    initial={{
-        //     x: -100,
-        //     opacity: 0,
-        // }}
-        // transition={{
-        //     duration: 1.2,
-        // }}
-        // whileInView={{
-        //     opacity: 1, x: 0,
-        // }}
-        viewport={{ once: true }}
-            className="flo-footer-instagram-area__image loaded mx-auto my-auto"
-            width="640"
-            height="320"
-            alt=""
-            src="/2.jpg"
-            style={{ opacity: 1, filter: 'blur(0px)' }}
-            
-          />
-          
-          <motion.img
-        //    initial={{
-        //     x: -100,
-        //     opacity: 0,
-        // }}
-        // transition={{
-        //     duration: 1.2,
-        // }}
-        // whileInView={{
-        //     opacity: 1, x: 0,
-        // }}
-        viewport={{ once: true }}
-            className="flo-footer-instagram-area__image loaded mx-auto my-auto"
-            width="640"
-            height="320"
-            alt=""
-            src="/5.jpg"
-            style={{ opacity: 1, filter: 'blur(0px)' }}
-          />
-          <motion.img
-        //    initial={{
-        //     x: 200,
-        //     opacity: 0,
-        // }}
-        // transition={{
-        //     duration: 1.2,
-        // }}
-        // whileInView={{
-        //     opacity: 1, x: 0,
-        // }}
-        // viewport={{ once: true }}
-            className="flo-footer-instagram-area__image loaded mx-auto my-auto"
-            width="640"
-            height="320"
-            alt=""
-            src="/4.jpg"
-            style={{ opacity: 1, filter: 'blur(0px)' }}
-          />
-          
-        </motion.div>
+          <h2 className="text-5xl font-light mt-3">Let's work together</h2>
+        </div>
+        <div className="flex flex-col md:flex-row items-center justify-between mt-10 md:mt-20">
+        <div className="flex flex-col md:flex-row gap-8">
+            <span className="flex items-center mb-4 md:mb-0">
+              <h3 className="mr-2">Follow us</h3>
+              <a href="https://www.instagram.com/">
+                <FaInstagram size={24} />
+              </a>
+            </span>
+            {/* Otros íconos */}
+          </div>
+       
+          <div className="flex flex-col md:flex-row gap-8">
+            <a href="mailto:info@info.com">
+              {/* <FaEmail size={24} /> */}
+              <p>Email: info@info.com</p>
+            </a>
+            <a href="tel:+31627847430">
+              <FaWhatsapp size={24} />
+              <p>+31 6 27 84 74 30</p>
+            </a>
+          </div>
+       
+        </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.5 }}
-      >
-        <button className='mt-8 mb-8 flex items-center'>
-          Back to top
-        </button>
-      </motion.div>
-
-     
-    </footer>
+    </motion.div>
   );
-};
-
-export default Footer;
+}
