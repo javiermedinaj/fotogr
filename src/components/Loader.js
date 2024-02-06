@@ -28,15 +28,13 @@ const Banner = () => {
     setTimeout(() => {
       setPlayMarquee(true);
     }, 2000);
-  }, []); // Este efecto solo se ejecutará una vez al montar el componente
+  }, []); 
 
   return (
     <div className="flex items-center justify-center min-h-screen">
       <motion.div className="banner mx-auto" variants={banner}>
         <BannerRowTop title={"s3 Studios"} />
-        {/* Elimina BannerRowCenter si no lo estás utilizando */}
-        {/* <BannerRowCenter title={"experience"} playMarquee={playMarquee} /> */}
-        {/* <BannerRowBottom title={"Studios"} /> */}
+      
       </motion.div>
     </div>
   );

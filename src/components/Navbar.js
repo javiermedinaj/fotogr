@@ -63,7 +63,7 @@ function Navbar() {
           <Link to="/contact" className="text-black px-2 dark:text-white">
             Contact
           </Link>
-          <Link to="/" className="text-black px-2 dark:text-white">
+          <Link to="/works" className="text-black px-2 dark:text-white">
             Works
           </Link>
         </div>

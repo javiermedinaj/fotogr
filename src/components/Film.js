@@ -18,11 +18,7 @@ const projects = [
     src: "/foto1.jpg",
     color: "#EFE8D3"
   },
-  // {
-  //   title: "Silencio",
-  //   src: "/5.jpg",
-  //   color: "#706D63"
-  // }
+
 ];
 
 const imageVariants = {
@@ -64,7 +60,7 @@ export default function Home() {
           </motion.div>
         ))}
       <div className='flex items-center justify-center p-6 mb-2'>
-        <Link to="/about" className='px-3 py-3 rounded bg-green-200 dark:text-black'>
+        <Link to="/works" className='px-3 py-3 rounded bg-green-200 dark:text-black'>
           <p>More works</p>
         </Link>
       </div>

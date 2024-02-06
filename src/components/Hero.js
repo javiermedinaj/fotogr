@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { motion } from 'framer-motion';
@@ -7,8 +7,19 @@ const Hero = () => {
   const firstText = useRef(null);
   const secondText = useRef(null);
   const slider = useRef(null);
-  let xPercent = 0;
-  let direction = -1;
+  const direction = useRef(-1); 
+
+  const animate = useCallback(() => { 
+    let xPercent = 0; 
+    if (xPercent < -100) {
+      xPercent = 0;
+    } else if (xPercent > 0) {
+      xPercent = -100;
+    }
+ 
+    requestAnimationFrame(animate);
+    xPercent += 0.1 * direction.current; 
+  }, []); 
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -20,26 +31,14 @@ const Hero = () => {
           scrub: 0.25,
           start: 0,
           end: window.innerHeight,
-          onUpdate: (e) => (direction = e.direction * -1),
+          onUpdate: (e) => (direction.current = e.direction * -1), 
         },
         x: '-500px',
       });
 
       requestAnimationFrame(animate);
     }
-  }, [slider.current]);
-
-  const animate = () => {
-    if (xPercent < -100) {
-      xPercent = 0;
-    } else if (xPercent > 0) {
-      xPercent = -100;
-    }
-    // gsap.set(firstText.current, { xPercent: xPercent });
-    // gsap.set(secondText.current, { xPercent: xPercent });
-    requestAnimationFrame(animate);
-    xPercent += 0.1 * direction;
-  };
+  }, [animate]); 
 
   const slideUp = {
     initial: {
