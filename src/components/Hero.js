@@ -52,18 +52,18 @@ const Hero = () => {
 
   return (
     <motion.main variants={slideUp} initial="initial" animate="enter" className="relative flex h-screen overflow-hidden">
-      <video src="/video1.mp4" autoPlay loop muted playsInline className="object-cover w-full h-full" alt="background" />
-      <div className="absolute bottom-20 left-0">
+      <video src="https://vimeo.com/93003441" autoPlay loop muted playsInline className="object-cover w-full h-full" alt="background" />
+      <div className="absolute bottom-10 lg:bottom-20 left-0">
         <div ref={slider} className="relative whitespace-nowrap">
-          <p ref={firstText} className="relative m-0 text-white text-4xl lg:text-6xl font-semibold pr-10">
-            Freelance
+          <p ref={firstText} className="relative ml-4 lg:ml-6 text-white text-3xl lg:text-5xl font-semibold pr-6 lg:pr-10">
+            S3
           </p>
-          <p ref={secondText} className="absolute left-full top-0 relative m-0 text-white text-4xl lg:text-6xl font-semibold pr-10">
-            Photographer
+          <p ref={secondText} className="absolute left-full top-0 relative m-0 text-white text-3xl lg:text-5xl font-semibold pr-6 lg:pr-10">
+            Studios
           </p>
         </div>
       </div>
-      <div data-scroll data-scroll-speed={0.1} className="absolute top-1/3 left-2/3 text-white text-base lg:text-xl font-light">
+      <div data-scroll data-scroll-speed={0.1} className="absolute top-1/4 lg:top-1/3 left-2/3 text-white text-base lg:text-xl font-light">
         <p>s3 Studios</p>
         <p>Segredo & Benoit Studios</p>
       </div>

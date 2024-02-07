@@ -35,7 +35,7 @@ function Navbar() {
         <img
           src="/logo.jpg"
           alt="Logo"
-          className="w-10 h-10 md:w-24 md:h-24 object-contain dark:hidden"
+          className="w-10 h-10 md:w-24 md:h-24 object-contain dark:invert"
         />
       </Link>
       <div className="flex items-center">

@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="flex flex-col items-center max-w-7xl w-full mx-10">
         <div className="border-b border-gray-600 pb-10 relative text-center">
           <a
-            href="mailto:info@dennissnellenberg.com"
+            href="mailto:sybstudioss@gmail.com"
             className="flex items-center"
           >
             <div className="w-20 h-20 rounded-full overflow-hidden mx-auto">

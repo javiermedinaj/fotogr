@@ -35,7 +35,7 @@ export default function Works() {
   const description = useRef(null);
   const isInView = useInView(description);
   return (
-    <div ref={description} className="lg:pl-20 lg:pr-20 pt-20 flex justify- p-6 dark:bg-zinc-950 dark:text-white">
+    <div ref={description} className="lg:pl-20 lg:pr-20 pt-20 flex justify- pb-20 p-8 dark:bg-zinc-950 dark:text-white">
       <div className="max-w-7xl flex gap-10 relative ">
         <p className="m-0 text-2xl lg:text-4xl leading-7">
           {phrase.split(" ").map((word, index) => (
