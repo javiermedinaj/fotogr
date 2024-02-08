@@ -30,7 +30,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="flex items-center justify-between bg-white-700 dark:bg-zinc-950 dark:text-white p-4">
+    <nav className="flex items-center justify-between bg-white-700 dark:bg-black dark:text-white p-4">
       <Link to="/" className="flex items-center">
         <img
           src="/logo.jpg"
