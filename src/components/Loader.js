@@ -1,86 +1,70 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
-const banner = {
-  animate: {
-    transition: {
-      delayChildren: 0.4,
-      staggerChildren: 0.1,
-    },
-  },
-};
+const words = ["Segredo", "&", "Benoit", "Studios"];
 
-const letterAni = {
-  initial: { y: 400 },
-  animate: {
-    y: 0,
-    transition: {
-      ease: [0.6, 0.01, -0.05, 0.95],
-      duration: 1,
-    },
-  },
-};
+export default function Loader() {
+    const [index, setIndex] = useState(0);
+    const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
-const Banner = () => {
-  const [playMarquee, setPlayMarquee] = useState(false);
+    useEffect(() => {
+        setDimension({ width: window.innerWidth, height: window.innerHeight });
+    }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setPlayMarquee(true);
-    }, 2000);
-  }, []); 
+    useEffect(() => {
+        if (index === words.length - 1) return;
+        const timeout = setTimeout(() => {
+            setIndex(index + 1);
+        }, index === 0 ? 1000 : 150);
+        return () => clearTimeout(timeout);
+    }, [index]);
 
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <motion.div className="banner mx-auto" variants={banner}>
-        <BannerRowTop title={"s3 Studios"} />
-      
-      </motion.div>
-    </div>
-  );
-};
+    const opacity = {
+        initial: { opacity: 0 },
+        enter: { opacity: 0.75, transition: { duration: 1, delay: 0.2 } },
+    };
 
-const AnimatedLetters = ({ title, disabled, textSize, fontWeight }) => (
-  <motion.span
-    className={`row-title ${textSize} ${fontWeight}`}
-    variants={disabled ? null : banner}
-    initial="initial"
-    animate="animate"
-  >
-    {[...title].map((letter, index) => (
-      <motion.span
-        key={index}
-        className="row-letter"
-        variants={disabled ? null : letterAni}
-      >
-        {letter}
-      </motion.span>
-    ))}
-  </motion.span>
-);
+    const slideUp = {
+        initial: { top: 0 },
+        exit: { top: "-100vh", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 } },
+    };
 
-const BannerRowTop = ({ title }) => {
-  return (
-    <div className="banner-row">
-      <div className="row-col text-center md:text-left">
-        <AnimatedLetters title={title} textSize="text-4xl md:text-6xl" fontWeight="font-bold" />
-      </div>
-      <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          ease: "easeInOut",
-          duration: 1,
-          delay: 0.4,
-        }}
-        className="row-col text-center md:text-left mt-4 md:mt-0"
-      >
-        <span className="row-message text-base md:text-xl font-semibold">
-          Especialistas en la creación de films únicos
-        </span>
-      </motion.div>
-    </div>
-  );
-};
+    const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height + 300} 0 ${dimension.height}  L0 0`;
+    const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${dimension.height} Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`;
 
-export default Banner;
+    const curve = {
+        initial: { d: initialPath, transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] } },
+        exit: { d: targetPath, transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 } },
+    };
+
+    return (
+        <motion.div
+        variants={slideUp}
+        initial="initial"
+        exit="exit"
+        className="introduction fixed z-50 flex items-center justify-center h-screen w-screen bg-gray-900"
+    >
+        {dimension.width > 0 && (
+            <>
+                <motion.p
+                    variants={opacity}
+                    initial="initial"
+                    animate="enter"
+                    className="relative z-10 flex items-center text-white text-6xl"
+                >
+                    <span className="block w-5 h-5 bg-white rounded-full mr-2"></span>
+                    {words[index]}
+                </motion.p>
+                <svg className="absolute top-0 w-full h-full">
+                    <motion.path
+                        variants={curve}
+                        initial="initial"
+                        exit="exit"
+                        className="fill-current text-gray-900"
+                    ></motion.path>
+                </svg>
+            </>
+        )}
+    </motion.div>
+    );
+}

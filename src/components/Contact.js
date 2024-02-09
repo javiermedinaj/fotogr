@@ -1,6 +1,7 @@
 import React from 'react';
-
+import videos from '../data/Videos.json';
 const Contact = () => {
+  const videoSrc = videos.videos[1].enlace;
   return (
     <div className="relative h-screen">
       <video
@@ -10,7 +11,7 @@ const Contact = () => {
         className="absolute h-full w-full object-cover"
         playsInline
       >
-        <source src="/rendervideo.mp4" type="video/mp4" />
+        <source src={videoSrc} type="video/mp4" />
         Tu navegador no soporta el elemento de video.
       </video>
       <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.75)] bg-fixed flex items-center justify-center">

@@ -1,0 +1,16 @@
+{
+    "videos": [
+        {
+            "nombre": "Video de boda 1",
+            "enlace": "https://res.cloudinary.com/dubr40tiq/video/upload/v1707442315/StudiosFotos/Videos/t2vsmqmjqmqpxt1qu7xi.mp4"
+        },
+        {
+            "nombre": "Video de boda 2",
+            "enlace": "https://res.cloudinary.com/dubr40tiq/video/upload/v1707442314/StudiosFotos/Videos/cacngvqsvwtwxzfgx8jl.mp4"
+        },
+        {
+            "nombre": "Video de boda 3",
+            "enlace": "https://res.cloudinary.com/dubr40tiq/video/upload/v1707442314/StudiosFotos/Videos/xx3az2rr3mnmmtbexfvq.mp4"
+        }
+    ]
+}

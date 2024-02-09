@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <motion.div
       ref={container}
-      className="flex flex-col items-center justify-center bg-gray-200 dark:bg-zinc-950 dark:text-white py-20 relative"
+      className="flex flex-col items-center justify-center bg-gray-200  py-20 relative"
     >
       <div className="flex flex-col items-center max-w-7xl w-full mx-10">
         <div className="border-b border-gray-600 pb-10 relative text-center">

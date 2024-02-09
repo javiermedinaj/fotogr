@@ -5,10 +5,13 @@ import Contact from "../components/Contact";
 import Layout from "../components/Layout";
 import Services from "../components/Services";
 import FilmView from "../components/FilmView";
+
+
+
 const Home = () => {
   return (
     <Layout>
-      <Contact />
+       <Contact />
       <Works />
       <Services />
       <Film />

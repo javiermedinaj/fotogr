@@ -8,7 +8,7 @@ const AboutPage = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -50 }}
       transition={{ duration: 0.5 }}
-      className=" mx-auto px-4 py-8 dark:bg-zinc-950 dark:text-white"
+      className=" mx-auto px-4 py-8 bg-slate-300 "
     >
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-3xl font-semibold mb-4">Sobre Nosotros</h2>
